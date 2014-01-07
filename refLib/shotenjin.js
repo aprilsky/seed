@@ -149,7 +149,7 @@ Shotenjin.getTemplateStr = function(filename){
     //console.log('get template:' + filename);
     var t = '';
     //这里使用的是同步读取
-    if(path.existsSync(filename)){
+    if(fs.existsSync(filename)){
         t = fs.readFileSync(filename, 'utf-8');
     }else{
         throw 'View: ' + filename + ' not exists';
@@ -167,8 +167,8 @@ Shotenjin.renderView = function(viewPath, context) {
         var template_str = Shotenjin.getTemplateStr(viewPath);
     	var template = new Shotenjin.Template();
     	template.convert(template_str);
-    	//添加到缓存中
-    	Shotenjin.templateCatch[viewPath] = template;
+    	//TODO 暂时不用缓存 添加到缓存中
+    	//Shotenjin.templateCatch[viewPath] = template;
     }
 	var output = template.render(context);
 	return output;

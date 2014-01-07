@@ -4,7 +4,6 @@
  */
 
 exports.index = function(){
-    console.log(this);
     this.render('blog/index.html', {msg:'Hello World'});
 };
 
@@ -56,6 +55,14 @@ exports.tweets_data = function(blogType){
 
 exports.about = function(){
     this.renderJson({msg:"Hello World"});
+};
+
+exports.toAdd = function(){
+    this.render("blog/add.html");
+};
+
+exports.addPost = function(){
+    this.renderJson({success:"Hello World"});
 };
 
 

@@ -1,0 +1,50 @@
+{# ../../header.html #}
+        <script type="text/javascript">
+            $(function(){
+                $("#search").bind("click",function(){
+                    if($('#corpCode').val()==''){
+                        return ;
+                    }
+                    $.get("getTrainAdminDetail_?corpCode="+$('#corpCode').val(),function(d,status){
+                        var html = _.template($('#t2').html())({datas: d});
+                        $('#result').html(html);
+                    });
+                });
+            })
+        </script>
+<script id="t2" type="text/template" >
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>工号</th>
+            <th>姓名</th>
+            <th>email</th>
+        </tr>
+        </thead>
+        <tbody>
+    <%_.each(datas, function(item) { %>
+    <tr class="success">
+        <td><%=item.employee_code%></td>
+        <td><%=item.user_name%></td>
+        <td><%=item.email%></td>
+    </tr>
+    <%});%>
+        </tbody>
+    </table>
+</script>
+
+
+<div class="hero-unit row">
+    <strong>得到“*个人*”部门的培训管理员</strong>
+    <div>
+        <input type="text" class="input-medium" id="corpCode" placeholder="企业ID"/>
+        <p><a href="#" class="btn btn-primary" id="search">查询</a></p>
+    </div>
+
+    <div id="result"></div>
+</div>
+<div class="row">
+
+</div>
+
+{# ../../footer.html #}

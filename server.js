@@ -1,6 +1,8 @@
 
 
 require('./refLib/shotenjin');
+
+require('pg');
 var http = require('http'),
     url = require("url"),
     path = require("path"),  
@@ -17,6 +19,7 @@ exports.runServer = function(port){
         //on用于添加一个监听函数到一个特定的事件
         req.on('data', function(chunk)
     	{
+            console.log(chunk);
     	    _postData += chunk;
     	})
     	.on('end', function()
@@ -72,7 +75,10 @@ process.on('uncaughtException', function (err) {
 });
 
 var handler404 = function(req, res){
-    viewEngine.render(req,res,'blog/index.html', {msg:'Hello World'});
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.write("Page Not Found");
+    res.end();
+//    viewEngine.render(req,res,'blog/index.html', {msg:'Hello World'});
 };
 
 var handler500 = function(req, res, err){

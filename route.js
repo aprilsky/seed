@@ -1,8 +1,3 @@
-/**
- * @author qleelulu
- * @blog http://qleelulu.cnblogs.com
- */
-
 var parseURL = require('url').parse;
 
 //根据http请求的method来分别保存route规则

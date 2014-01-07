@@ -42,4 +42,37 @@ route.map({
     action: 'about'
 });
 
+route.map({
+    method:'get',
+    url: /^\/toAdd\/?$/i,
+    controller: 'blog',
+    action: 'toAdd'
+});
+
+route.map({
+    method:'post',
+    url: /^\/addPost\/?$/i,
+    controller: 'blog',
+    action: 'addPost'
+});
+
+
+route.map({
+    method:'get',
+    url: /^\/tools\/?$/i,
+    controller: 'nav',
+    action: 'tools'
+});
+
+
+
+route.map({
+    method:'get',
+    url: /^\/getTrainAdminDetail_\/?$/i,
+    controller: 'tools',
+    action: 'getTrainAdminDetail_'
+});
+
+
+
 exports.staticFileDir = 'static';
